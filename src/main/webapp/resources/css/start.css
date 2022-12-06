@@ -1,0 +1,21 @@
+p {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 20px;
+}
+
+.start {
+    font-size: 3rem;
+}
+
+body {
+    background: aquamarine;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

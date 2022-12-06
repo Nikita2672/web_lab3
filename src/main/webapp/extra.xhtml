@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet name="css/header.css"/>
+    <h:outputStylesheet name="css/form.css"/>
+    <h:outputStylesheet name="css/table.css"/>
+    <h:outputStylesheet name="css/graph.css"/>
+    <h:outputStylesheet name="css/main.css"/>
+    <h:outputStylesheet name="css/graphic.css"/>
+    <h:outputScript name="js/processFieldSelection.js"/>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-axis.v1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Web_lab3</title>
+</h:head>
+<h:body>
+    <div class="header">
+        <h3 id="author" class="header__title header__title_animation">Extra task</h3>
+    </div>
+    <div id="container">
+        <h:form>
+        <h:commandButton class="header__title header__title_animation"
+                         action="toMain" value="MAIN PAGE"/>
+        </h:form>
+        <div style="overflow: auto" id="graph">
+            <svg id="boxplot" width="100%">
+                <text x="50%" y="50%" font-size="2rem" dominant-baseline="middle" text-anchor="middle">here will be your graphic</text>
+            </svg>
+        </div>
+        <div class="form">
+            <h4 class="header__title header__title_animation">Form with date</h4>
+            <h:form styleClass="form__frame" id="j_idt">
+                <div class="value_time">
+                    <p class="values__year">
+                        <h:commandButton type="button" id="year2008" value="2008" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2008', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2009" value="2009" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2009', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2010" value="2010" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2010', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2011" value="2011" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2011', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2012" value="2012" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2012', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2013" value="2013" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2013', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2014" value="2014" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2014', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2015" value="2015" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2015', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2016" value="2016" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2016', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2017" value="2017" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2017', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2018" value="2018" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2018', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2019" value="2019" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2019', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2020" value="2020" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2020', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2021" value="2021" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2021', 'j_idt:year')"/>
+                        <h:commandButton type="button" id="year2022" value="2022" styleClass="year-button"
+                                         onclick="processFieldSelection(FIELD_YEAR, '2022', 'j_idt:year')"/>
+                        <p:inputText value="#{dataManager.transmittedYear}" type="hidden" name="year"
+                                     id="year_value"/>
+                    </p>
+                    <p class="values__month">
+                        <h:commandButton type="button" id="monthJanuary" value="January"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'January', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthFebruary" value="February"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'February', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthMarch" value="March"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'March', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthApril" value="April"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'April', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthMay" value="May"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'May', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthJune" value="June"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'June', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthJuly" value="July"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'July', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthAugust" value="August"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'August', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthSeptember" value="September"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'September', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthOctober" value="October"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'October', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthNovember" value="November"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'November', 'j_idt:month')"/>
+                        <h:commandButton type="button" id="monthDecember" value="December"
+                                         onclick="processFieldSelection(FIELD_MONTH, 'December', 'j_idt:month')"/>
+                        <p:inputText value="#{dataManager.transmittedMonth}" type="hidden" name="month"
+                                     id="month_value"/>
+                    </p>
+                    <p>
+                        <p:commandButton ajax="true" update="drawGraphic" id="send_button" value="send"
+                                         action="#{dataManager.loadGraphic}"/>
+                    </p>
+                </div>
+            </h:form>
+        </div>
+    </div>
+    <h:panelGroup id="drawGraphic">
+        <h:outputScript>
+            function drawGraphic() {
+            try {
+            let date = JSON.parse('#{dataManager.getDate()}');
+            let open = JSON.parse('#{dataManager.getOpen()}');
+            let high = JSON.parse('#{dataManager.getHigh()}');
+            let low = JSON.parse('#{dataManager.getLow()}');
+            let close = JSON.parse('#{dataManager.getClose()}');
+            drawGraphics(date, open, high, low, close);
+            } catch (error) {
+            Swal.fire({
+            icon: 'info',
+            title: 'Instruction',
+            text: 'Please select Year and Month'
+            })
+            }
+            }
+            drawGraphic();
+        </h:outputScript>
+    </h:panelGroup>
+</h:body>
+<h:outputScript name="js/graphic.js"/>
+<h:outputScript name="js/constants.js"/>
+</html>

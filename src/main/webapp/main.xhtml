@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:p="http://primefaces.org/ui"
+      xsi:schemaLocation="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet name="css/header.css"/>
+    <h:outputStylesheet name="css/form.css"/>
+    <h:outputStylesheet name="css/table.css"/>
+    <h:outputStylesheet name="css/graph.css"/>
+    <h:outputStylesheet name="css/main.css"/>
+    <h:outputScript name="js/processFieldSelection.js"/>
+    <h:outputScript name="js/start.js"/>
+    <h:outputScript name="js/reset.js"/>
+    <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Web_lab3</title>
+</h:head>
+<h:body onload="drawDots(JSON.parse('#{dataManager.getX()}'), JSON.parse('#{dataManager.getY()}'),  JSON.parse('#{dataManager.getR()}'), JSON.parse('#{dataManager.getResult()}'))">
+
+    <div class="header">
+        <h3 id="author" class="header__title header__title_animation">Main Page</h3>
+    </div>
+    <h:form>
+        <h:commandButton class="header__title header__title_animation"
+                         action="toStart" value="START PAGE"/>
+        <h:commandButton class="header__title header__title_animation"
+                         action="toExtra" value="EXTRA PAGE"/>
+    </h:form>
+    <div class="graph">
+        <h3 class="header__title header__title_animation">Graphic</h3>
+        <div class="graph__plot form__frame_animation">
+            <canvas id="graph" height="360" width="360"></canvas>
+        </div>
+    </div>
+    <div class="form">
+        <h4 class="header__title header__title_animation">Form with coordinates</h4>
+        <h:form class="form__frame form__frame_animation" id="j_idt">
+            <div class="values">
+                <div>
+                    <p class="values__x">
+                        <label for="x_value">X:(default 0)</label>
+                        <h:commandButton type="button" class="x-button" id="x-3" value="-3"
+                                         onclick="processFieldSelection(FIELD_X, '-3', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x-2" value="-2"
+                                         onclick="processFieldSelection(FIELD_X, '-2', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x-1" value="-1"
+                                         onclick="processFieldSelection(FIELD_X, '-1', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x0" value="0"
+                                         onclick="processFieldSelection(FIELD_X, '0', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x1" value="1"
+                                         onclick="processFieldSelection(FIELD_X, '1', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x2" value="2"
+                                         onclick="processFieldSelection(FIELD_X, '2', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x3" value="3"
+                                         onclick="processFieldSelection(FIELD_X, '3', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x4" value="4"
+                                         onclick="processFieldSelection(FIELD_X, '4', 'j_idt:x')"/>
+                        <h:commandButton type="button" class="x-button" id="x5" value="5"
+                                         onclick="processFieldSelection(FIELD_X, '5', 'j_idt:x')"/>
+                        <p:inputText value="#{dataManager.transmittedXCoordinate}" type="hidden" name="x_coord"
+                                     id="x_value"/>
+                    </p>
+                    <!--))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))-->
+                    <p class="values__y">
+                        <label for="y_value">Y:(default 0)</label><p:inputNumber value="#{dataManager.transmittedYCoordinate}"
+                                                                    id="y_value" class="input js-input js-input-Y"
+                                                                    name="y_value" minValue="-5" maxValue="3" decimalSeparator="."
+                                                                      decimalPlaces="6"
+                                                                    placeholder="Please enter Y">
+                        <f:converter converterId="jakarta.faces.Double" />
+                    </p:inputNumber>
+                        <label id="y-warning">Y (-5; 3)</label>
+                    </p>
+                    <!--))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))-->
+                    <p class="values__r">
+                        <label for="r_value">R:(default 1)</label>
+                        <h:commandButton type="button" class="x-button" id="r1" value="1"
+                                         onclick="processFieldSelection(FIELD_R, '1', 'j_idt:r')"/>
+                        <h:commandButton type="button" class="x-button" id="r2" value="2"
+                                         onclick="processFieldSelection(FIELD_R, '2', 'j_idt:r')"/>
+                        <h:commandButton type="button" class="x-button" id="r3" value="3"
+                                         onclick="processFieldSelection(FIELD_R, '3', 'j_idt:r')"/>
+                        <h:commandButton type="button" class="x-button" id="r4" value="4"
+                                         onclick="processFieldSelection(FIELD_R, '4', 'j_idt:r')"/>
+                        <h:commandButton type="button" class="x-button" id="r5" value="5"
+                                         onclick="processFieldSelection(FIELD_R, '5', 'j_idt:r')"/>
+                        <p:inputText value="#{dataManager.transmittedRValue}" type="hidden" name="r_value"
+                                     id="r_value"/>
+                    </p>
+                </div>
+                <!--))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))-->
+                <p>
+                    <p:commandButton id="reset" class="reset" type="button" value="reset" onclick="cleanInput()"/>
+                </p>
+                <p>
+                    <p:commandButton ajax="true" update="table drawDot" id="send_button"
+                                     class="reset"  value="send"
+                                     action="#{dataManager.setData(false)}"/>
+                </p>
+            </div>
+            <p:remoteCommand name="rc" update="table drawDot" action="#{dataManager.fromGraph}"/>
+            <p:remoteCommand name="loading" update="table drawDot"/>
+        </h:form>
+    </div>
+
+    <div class="table_box">
+        <h4 class="header__title header__title_animation">Table with results</h4>
+        <h:dataTable value="#{dataManager.getAttempts()}" var="a" id="table">
+            <tr>
+                <td>X</td>
+                <td>Y</td>
+                <td>R</td>
+                <td>Result</td>
+                <td>Work time(in microseconds)</td>
+                <td>Start time</td>
+            </tr>
+            <h:column>
+                <f:facet name="header">X</f:facet>
+                <h:outputText value="#{a.x}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Y</f:facet>
+                <h:outputText value="#{a.y}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">R</f:facet>
+                <h:outputText value="#{a.r}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Result</f:facet>
+                <h:outputText value="#{a.result}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Start time</f:facet>
+                <h:outputText value="#{a.date}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">work time</f:facet>
+                <h:outputText value="#{a.workTime}"/>
+            </h:column>
+        </h:dataTable>
+    </div>
+    <h:panelGroup id="drawDot">
+        <h:outputScript>
+            function drawDot() {
+            let x = JSON.parse('#{dataManager.getX()}');
+            let y = JSON.parse('#{dataManager.getY()}');
+            let r = JSON.parse('#{dataManager.getR()}');
+            let result = JSON.parse('#{dataManager.getResult()}');
+            drawDots(x, y, r, result);
+            }
+            drawDot();
+            window.onload = function () {
+            drawDot();
+            }
+        </h:outputScript>
+    </h:panelGroup>
+</h:body>
+<h:outputScript name="js/constants.js"/>
+<h:outputScript name="js/graph.js"/>
+</html>

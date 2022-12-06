@@ -1,0 +1,94 @@
+.graph {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.graph__plot {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #48466D;
+}
+
+
+svg {
+    border: 1px solid white;
+    stroke: rgba(0, 0, 0, 0.92);
+    fill: #0969a2;
+    margin: 60px 50px 50px;
+    font-size: 10px;
+}
+
+.container-point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.graph__plot_animation {
+    position: relative;
+    margin: 30px auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+}
+.graph__plot_animation span {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+.graph__plot_animation span:nth-child(1) {
+    transform:rotate(0deg);
+}
+.graph__plot_animation span:nth-child(2) {
+    transform:rotate(90deg);
+}
+.graph__plot_animation span:nth-child(3) {
+    transform:rotate(180deg);
+}
+.graph__plot_animation span:nth-child(4) {
+    transform:rotate(270deg);
+}
+.graph__plot_animation span:before {
+    content: '';
+    position: absolute;
+    width:100%;
+    height: 6px;
+    background: linear-gradient(
+            -225deg,
+            #231557 0%,
+            #44107a 29%,
+            #ff1361 67%,
+            #fff800 100%
+    );;
+    animation: anim-ramka-4 4s linear infinite;
+}
+@keyframes anim-ramka-4 {
+    0% {
+        transform:scaleX(0);
+        transform-origin: left;
+    }
+    50% {
+        transform:scaleX(1);
+        transform-origin: left;
+    }
+    50.1% {
+        transform:scaleX(1);
+        transform-origin: right;
+    }
+    100% {
+        transform:scaleX(0);
+        transform-origin: right;
+    }
+}

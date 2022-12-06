@@ -1,0 +1,30 @@
+body
+{
+    background-color: #404040;
+}
+
+.clockpage {
+    border-radius: 20px;
+    max-width: 500px;
+    min-width: 100px;
+    background-image: linear-gradient(
+            -225deg,
+            #231557 0%,
+            #44107a 29%,
+            #ff1361 67%,
+            #fff800 100%,
+            #231557 0%
+    );
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 32px;
+    padding: 10px;
+    font-weight: bold;
+    margin: 100px auto auto;
+}
+
+#dayOfWeek {
+    display: block;
+    font-weight: normal;
+    font-size: 18px;
+}
